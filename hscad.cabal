@@ -1,0 +1,76 @@
+cabal-version:      2.4
+name:               hscad
+version:            0.1.0.0
+synopsis:           CAD with Haskell!
+description:        CAD with Haskell!
+license:            BSD-3-Clause
+author:             Seungheon Oh
+maintainer:         seungheon.ooh@gmail.com
+
+-- A copyright notice.
+-- copyright:
+-- category:
+extra-source-files: CHANGELOG.md
+
+common common-lang
+  ghc-options:
+    -Wall -Wcompat -Wincomplete-uni-patterns -Wno-type-defaults
+    -Wincomplete-record-updates -Wmissing-deriving-strategies
+    -Wredundant-constraints -Wmissing-export-lists -Werror
+
+  build-depends:
+    , base          ^>=4.16
+    , generics-sop
+    , vector
+
+  default-extensions:
+    NoFieldSelectors
+    BangPatterns
+    BinaryLiterals
+    ConstraintKinds
+    DataKinds
+    DeriveAnyClass
+    DeriveGeneric
+    DeriveTraversable
+    DerivingVia
+    EmptyCase
+    FlexibleContexts
+    FlexibleInstances
+    GeneralisedNewtypeDeriving
+    HexFloatLiterals
+    ImportQualifiedPost
+    InstanceSigs
+    KindSignatures
+    LambdaCase
+    MultiParamTypeClasses
+    NumericUnderscores
+    OverloadedLabels
+    OverloadedStrings
+    PackageImports
+    ScopedTypeVariables
+    StandaloneDeriving
+    TupleSections
+    TypeApplications
+    TypeFamilies
+    TypeOperators
+
+  default-language:   Haskell2010
+
+library
+  import:          common-lang
+  exposed-modules:
+    OpenSCAD
+    OpenSCAD.Vec
+
+  other-modules:
+  hs-source-dirs:  src
+
+executable hscad
+  import:           common-lang
+  main-is:          Main.hs
+  build-depends:
+    , base   ^>=4.16.2.0
+    , hscad
+
+  hs-source-dirs:   app
+  default-language: Haskell2010
